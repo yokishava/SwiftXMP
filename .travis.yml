@@ -10,5 +10,8 @@ script:
 - xcodebuild -configuration Debug -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -target SwiftXMP
 - xcodebuild -project Demo/Demo.xcodeproj -configuration Debug -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -target Demo
 
+- xcodebuild -scheme SwiftXMP -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8' test
+- xcodebuild -scheme SwiftXMP -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X' test
+
 
 

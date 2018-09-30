@@ -125,6 +125,19 @@ public class SwiftXMP {
     }
     
     //指定した範囲のbytes（[UInt8]）を削除
+    //Generics
+    internal func removeBytes<Element>(bytes: [Element], start: Int, end: Int) -> [Element] {
+        let index = start
+        var counter = start
+        var _bytes = bytes
+        while (counter < end) {
+            _bytes.remove(at: index)
+            counter = counter + 1
+        }
+        return _bytes
+    }
+    
+    //指定した範囲のbytes（[UInt8]）を削除
     internal func removeBytes(bytes: [UInt8], start: Int, end: Int) -> [UInt8] {
         let index = start
         var counter = start
@@ -133,6 +146,18 @@ public class SwiftXMP {
             _bytes.remove(at: index)
             counter = counter + 1
         }
+        return _bytes
+    }
+    
+    //指定した位置にbytes（[UInt8]）を挿入
+    //Generics
+    internal func insertBytes<Element>(bytes: [Element], start: Int, insertBytes: [Element]) -> [Element] {
+        var index = start
+        var _bytes = bytes
+        insertBytes.forEach({
+            _bytes.insert($0, at: index)
+            index = index + 1
+        })
         return _bytes
     }
     
@@ -163,6 +188,16 @@ public class SwiftXMP {
             }
         }
         return xmpEndIndex
+    }
+    
+    //指定した範囲のbytes([UInt8])を取得
+    //Generics
+    internal func selectBytes<Element>(bytes: [Element], start: Int, length: Int) -> [Element] {
+        var _bytes: [Element] = []
+        for index in start..<start + length {
+            _bytes.append(bytes[index])
+        }
+        return _bytes
     }
     
     //指定した範囲のbytes([UInt8])を取得
