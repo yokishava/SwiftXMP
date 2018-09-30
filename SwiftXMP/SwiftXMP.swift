@@ -11,18 +11,25 @@ import Foundation
 public class SwiftXMP {
     
     //jpgなどのファイルパス
-    func embedXmp(contens: URL, xml: String) {
+    func embedXmp(contens: URL, xml: String) -> Result {
         do {
             let data = try Data(contentsOf: contens)
-            //writeXmp(data: data)
+            let bytes = convertDataToBytes(data: data)
+            let indexes = findXmp(bytes: bytes)
+            let newData = writeXmp(bytes: bytes, xmpHeadIndex: indexes.head, xmpEndIndex: indexes.end, exifHeadIndex: indexes.exifHead, xml: xml)
+            return .success(newData)
         } catch let e {
             print("error : \(e.localizedDescription)")
+            return .failed(e)
         }
     }
     
     //jpgなどのデータ
-    func embedXmp(contens: Data, xml: String) {
-        //writeXmp(data: contens)
+    func embedXmp(contens: Data, xml: String) -> Data {
+        let bytes = convertDataToBytes(data: contens)
+        let indexes = findXmp(bytes: bytes)
+        let newData = writeXmp(bytes: bytes, xmpHeadIndex: indexes.head, xmpEndIndex: indexes.end, exifHeadIndex: indexes.exifHead, xml: xml)
+        return newData
     }
     
     internal func findXmp(bytes: [UInt8]) -> (head: Int?, end: Int?, exifHead: Int?) {
