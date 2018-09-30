@@ -32,15 +32,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //撮影終了後に呼び出される
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let url = info[UIImagePickerControllerImageURL] as? NSURL {
-            print(url)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            print(image)
         }
-//        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            print(image)
-//        }
-//        if let m = info[UIImagePickerControllerMediaMetadata] as? NSMutableDictionary {
-//            print(m)
-//        }
         picker.dismiss(animated: true, completion: nil)
     }
 
