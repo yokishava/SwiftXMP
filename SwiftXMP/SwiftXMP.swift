@@ -46,11 +46,6 @@ public class SwiftXMP {
                         xmpEndIndex = findEndXmpIndex(start: start, bytes: bytes)
                     } else {
                         exifHeadIndex = index
-                        
-                        //...
-                        let d = Data(bytes: [bytes[index + 2], bytes[index + 3]])
-                        let s = String(data: d, encoding: .utf8)!
-                        print("s : \(s)")
                     }
                 }
             }
