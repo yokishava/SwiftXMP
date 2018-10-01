@@ -104,8 +104,8 @@ public class SwiftXMP {
         print("xmlBytes count : \(xmlBytes.count)")
         print("Hexadecimal : \(String(xmlBytes.count, radix: 16))")
         
-        //+3 はセグメントのデータ長と数を合わせるため
-        var count = xmlBytes.count + 3
+        //+2 はセグメントのデータ長と数を合わせるため
+        var count = xmlBytes.count + 2
         let data = Data(bytes: &count, count: MemoryLayout.size(ofValue: count))
         let bytes = data.map({$0})
         

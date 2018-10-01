@@ -47,5 +47,9 @@
 	<string>use photo library</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>use photo add</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 </dict>
 </plist>

@@ -33,9 +33,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //撮影終了後に呼び出される
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            print(image)
+            let imgData = UIImageJPEGRepresentation(image, 1.0)
+            exportJpgFile(data: imgData!)
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func exportJpgFile(data: Data) {
+        var path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        path = path + "/sample.jpg"
+        do {
+            try data.write(to: URL(fileURLWithPath: path))
+            
+            let xmp = Xmp.xmp()
+            let swiftXmp = SwiftXMP()
+            
+            switch swiftXmp.embedXmp(contens: URL(fileURLWithPath: path), xml: xmp) {
+            case .success(let d):
+                try d.write(to: URL(fileURLWithPath: path))
+                print("add xmp successfully")
+            case .failed(let e):
+                print("add xmp error : \(e.localizedDescription)")
+            }
+        } catch let e {
+            print("data write error : \(e.localizedDescription)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
