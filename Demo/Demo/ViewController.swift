@@ -34,7 +34,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             let imgData = UIImageJPEGRepresentation(image, 1.0)
-            exportJpgFile(data: imgData!)
+            
+            let random = Int(arc4random_uniform(10))
+            print("random : \(random)")
+            if random <= 4 {
+                print("export jpg file")
+                exportJpgFile(data: imgData!)
+            } else {
+                print("_export jpg file")
+                _exportJpgFile(data: imgData!)
+            }
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -55,6 +64,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             case .failed(let e):
                 print("add xmp error : \(e.localizedDescription)")
             }
+        } catch let e {
+            print("data write error : \(e.localizedDescription)")
+        }
+    }
+    
+    func _exportJpgFile(data: Data) {
+        var path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        path = path + "/_sample.jpg"
+        let xmp = Xmp.xmp()
+        let swiftXmp = SwiftXMP()
+        let _data = swiftXmp.embedXmp(contens: data, xml: xmp)
+        
+        do {
+            try _data.write(to: URL(fileURLWithPath: path))
+            print("add xmp successfully")
         } catch let e {
             print("data write error : \(e.localizedDescription)")
         }
