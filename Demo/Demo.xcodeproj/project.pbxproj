@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		59A48B632162601700694BBB /* Xmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A48B622162601700694BBB /* Xmp.swift */; };
+		59A48B6521626BC200694BBB /* Exif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A48B6421626BC200694BBB /* Exif.swift */; };
 		59C46313215F160C0076333D /* SwiftXMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C46312215F160C0076333D /* SwiftXMP.swift */; };
 		59C4631521608C5D0076333D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4631421608C5D0076333D /* Result.swift */; };
 		59D23487215F148900028BF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D23486215F148900028BF1 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		59A48B622162601700694BBB /* Xmp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xmp.swift; sourceTree = "<group>"; };
+		59A48B6421626BC200694BBB /* Exif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exif.swift; sourceTree = "<group>"; };
 		59C46309215F15610076333D /* SwiftXMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftXMP.h; sourceTree = "<group>"; };
 		59C46312215F160C0076333D /* SwiftXMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftXMP.swift; sourceTree = "<group>"; };
 		59C4631421608C5D0076333D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				59D23486215F148900028BF1 /* AppDelegate.swift */,
 				59D23488215F148900028BF1 /* ViewController.swift */,
 				59A48B622162601700694BBB /* Xmp.swift */,
+				59A48B6421626BC200694BBB /* Exif.swift */,
 				59D2348A215F148900028BF1 /* Main.storyboard */,
 				59D2348D215F148B00028BF1 /* Assets.xcassets */,
 				59D2348F215F148B00028BF1 /* LaunchScreen.storyboard */,
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59D23489215F148900028BF1 /* ViewController.swift in Sources */,
+				59A48B6521626BC200694BBB /* Exif.swift in Sources */,
 				59C46313215F160C0076333D /* SwiftXMP.swift in Sources */,
 				59C4631521608C5D0076333D /* Result.swift in Sources */,
 				59D23487215F148900028BF1 /* AppDelegate.swift in Sources */,

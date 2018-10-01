@@ -37,12 +37,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             let random = Int(arc4random_uniform(10))
             print("random : \(random)")
-            if random <= 4 {
+            if random <= 2 {
                 print("export jpg file")
                 exportJpgFile(data: imgData!)
-            } else {
+            } else if 3 <= random && random <= 6 {
                 print("_export jpg file")
                 _exportJpgFile(data: imgData!)
+            } else {
+                print("exportJpgFileAfterExif")
+                exportJpgFileAfterExif(data: imgData!)
             }
         }
         picker.dismiss(animated: true, completion: nil)
@@ -81,6 +84,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print("add xmp successfully")
         } catch let e {
             print("data write error : \(e.localizedDescription)")
+        }
+    }
+    
+    func exportJpgFileAfterExif(data: Data) {
+        var path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        path = path + "/dest.jpg"
+        do {
+            try data.write(to: URL(fileURLWithPath: path))
+            
+            Exif.exif(path: path)
+            
+            let xmp = Xmp.xmp()
+            let swiftXmp = SwiftXMP()
+
+            switch swiftXmp.embedXmp(contens: URL(fileURLWithPath: path), xml: xmp) {
+            case .success(let d):
+                try d.write(to: URL(fileURLWithPath: path))
+                print("add xmp successfully")
+            case .failed(let e):
+                print("add xmp error : \(e.localizedDescription)")
+            }
+            
+        } catch let e {
+            print("error : \(e.localizedDescription)")
         }
     }
 
