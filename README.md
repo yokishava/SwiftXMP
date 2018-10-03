@@ -16,7 +16,7 @@ It is possible to write XMP on a APP1 segment without erase APP1 segemnet of Exi
 
 ## Installtion
 
-#### cocoaPods
+### cocoaPods
 
 You want to add ```pod 'SwiftXMP', '~> 0.0'``` similar to the following to your Podfile:
 
@@ -32,11 +32,11 @@ Alternatively to give it a test run, run the command:
 
 ```pod try SwiftXMP```
 
-#### carthage
+### carthage
 
 insert following script to your Cartfile:
 
-github "2takaanthony85/SwiftXMP"
+```github "2takaanthony85/SwiftXMP"```
 
 run ```carthage update```
 
