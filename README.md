@@ -18,11 +18,11 @@ It is possible to write XMP on a APP1 segment without erase APP1 segemnet of Exi
 
 ### cocoaPods
 
-You want to add ```pod 'SwiftXMP', '~> 0.0'``` similar to the following to your Podfile:
+You want to add ```pod 'SwiftXMP', '~> 0.1'``` similar to the following to your Podfile:
 
 ```
 target 'MyApp' do
-  pod 'SwiftXMP', '~> 0.0'
+  pod 'SwiftXMP', '~> 0.1'
 end
 ```
 
