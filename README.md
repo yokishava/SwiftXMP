@@ -12,7 +12,7 @@ It is possible to write XMP on a APP1 segment without erase APP1 segemnet of Exi
 
 ## Requirements
 
-* iOS 10.0 or later
+* iOS 9.0 or later
 
 ## Installtion
 
