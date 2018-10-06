@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Result {
+public enum Result {
     
     case success(Data)
     
