@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class SwiftXMP {
+open class SwiftXMP {
     
     //jpgなどのファイルパス
-    func embedXmp(contens: URL, xml: String) -> Result {
+    open func embedXmp(contens: URL, xml: String) -> Result {
         do {
             let data = try Data(contentsOf: contens)
             let bytes = convertDataToBytes(data: data)
@@ -25,14 +25,14 @@ public class SwiftXMP {
     }
     
     //jpgなどのデータ
-    func embedXmp(contens: Data, xml: String) -> Data {
+    open func embedXmp(contens: Data, xml: String) -> Data {
         let bytes = convertDataToBytes(data: contens)
         let indexes = findXmp(bytes: bytes)
         let newData = writeXmp(bytes: bytes, xmpHeadIndex: indexes.head, xmpEndIndex: indexes.end, exifHeadIndex: indexes.exifHead, xml: xml)
         return newData
     }
     
-    internal func findXmp(bytes: [UInt8]) -> (head: Int?, end: Int?, exifHead: Int?) {
+    public func findXmp(bytes: [UInt8]) -> (head: Int?, end: Int?, exifHead: Int?) {
         //XMPの始まりのindex(0xFFE1のFFにあたる部分)
         var xmpHeadIndex: Int?
         //XMPの終わりのindex
@@ -60,7 +60,7 @@ public class SwiftXMP {
         return (xmpHeadIndex, xmpEndIndex, exifHeadIndex)
     }
     
-    internal func writeXmp(bytes: [UInt8], xmpHeadIndex: Int?, xmpEndIndex: Int?, exifHeadIndex: Int?, xml: String) -> Data {
+    public func writeXmp(bytes: [UInt8], xmpHeadIndex: Int?, xmpEndIndex: Int?, exifHeadIndex: Int?, xml: String) -> Data {
         //xmlから新しいxmpをセグメント単位で作成
         let xmp = createXmp(xml: xml)
         
@@ -83,12 +83,12 @@ public class SwiftXMP {
     }
     
     //Data -> [UInt8]
-    internal func convertDataToBytes(data: Data) -> [UInt8] {
+    public func convertDataToBytes(data: Data) -> [UInt8] {
         return data.map({$0})
     }
     
     //xmpを新しく作成
-    internal func createXmp(xml: String) -> [UInt8] {
+    public func createXmp(xml: String) -> [UInt8] {
         let adobe = "http://ns.adobe.com/xap/1.0/"
         let header = "<?xpacket begin=\"\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
         let footer = "<?xpacket end=\"w\"?>"
@@ -119,14 +119,14 @@ public class SwiftXMP {
     }
     
     //String → [UInt8]
-    internal func convertStringToBytes(value: String) -> [UInt8] {
+    public func convertStringToBytes(value: String) -> [UInt8] {
         let data = value.data(using: .utf8)!
         return data.map({$0})
     }
     
     //指定した範囲のbytes（[UInt8]）を削除
     //Generics
-    internal func removeBytes<Element>(bytes: [Element], start: Int, end: Int) -> [Element] {
+    public func removeBytes<Element>(bytes: [Element], start: Int, end: Int) -> [Element] {
         let index = start
         var counter = start
         var _bytes = bytes
@@ -138,7 +138,7 @@ public class SwiftXMP {
     }
     
     //指定した範囲のbytes（[UInt8]）を削除
-    internal func removeBytes(bytes: [UInt8], start: Int, end: Int) -> [UInt8] {
+    public func removeBytes(bytes: [UInt8], start: Int, end: Int) -> [UInt8] {
         let index = start
         var counter = start
         var _bytes = bytes
@@ -162,7 +162,7 @@ public class SwiftXMP {
     }
     
     //指定した位置にbytes（[UInt8]）を挿入
-    internal func insertBytes(bytes: [UInt8], start: Int, insertBytes: [UInt8]) -> [UInt8] {
+    public func insertBytes(bytes: [UInt8], start: Int, insertBytes: [UInt8]) -> [UInt8] {
         var index = start
         var _bytes = bytes
         insertBytes.forEach({
@@ -173,7 +173,7 @@ public class SwiftXMP {
     }
     
     //XMPのセグメントの最後にあたるindexを取得
-    internal func findEndXmpIndex(start: Int, bytes: [UInt8]) -> Int {
+    public func findEndXmpIndex(start: Int, bytes: [UInt8]) -> Int {
         //29 : "http://ns.adobe.com/xap/1.0/"の次のbyteのindexを示す
         var offset = start + 29
         var xmpEndIndex = 0
@@ -192,7 +192,7 @@ public class SwiftXMP {
     
     //指定した範囲のbytes([UInt8])を取得
     //Generics
-    internal func selectBytes<Element>(bytes: [Element], start: Int, length: Int) -> [Element] {
+    public func selectBytes<Element>(bytes: [Element], start: Int, length: Int) -> [Element] {
         var _bytes: [Element] = []
         for index in start..<start + length {
             _bytes.append(bytes[index])
@@ -201,7 +201,7 @@ public class SwiftXMP {
     }
     
     //指定した範囲のbytes([UInt8])を取得
-    internal func selectBytes(bytes: [UInt8], start: Int, length: Int) -> [UInt8] {
+    public func selectBytes(bytes: [UInt8], start: Int, length: Int) -> [UInt8] {
         var _bytes: [UInt8] = []
         for index in start..<start + length {
             _bytes.append(bytes[index])
@@ -210,7 +210,7 @@ public class SwiftXMP {
     }
     
     //指定範囲のbytes → String
-    internal func getBytesString(bytes: [UInt8], start: Int, length: Int) -> String {
+    public func getBytesString(bytes: [UInt8], start: Int, length: Int) -> String {
         let _bytes = selectBytes(bytes: bytes, start: start, length: length)
         let data = Data(bytes: _bytes)
         if let str = String(data: data, encoding: .utf8) {
