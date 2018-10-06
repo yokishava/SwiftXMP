@@ -68,7 +68,6 @@ Pod::Spec.new do |s|
 
   # s.platform     = :ios
    s.platform     = :ios, "9.0"
-
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
   # s.osx.deployment_target = "10.7"
@@ -95,7 +94,6 @@ Pod::Spec.new do |s|
 
   s.source_files  = "SwiftXMP/**/*.swift"
   #s.exclude_files = "Classes/Exclude"
-
   # s.public_header_files = "Classes/**/*.h"
 
   s.swift_version = "4.1"
@@ -110,7 +108,6 @@ Pod::Spec.new do |s|
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
-
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 
@@ -122,7 +119,6 @@ Pod::Spec.new do |s|
 
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
-
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
 
@@ -134,7 +130,6 @@ Pod::Spec.new do |s|
   #  you can include multiple dependencies to ensure it works.
 
   # s.requires_arc = true
-
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
 
