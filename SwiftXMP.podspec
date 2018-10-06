@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SwiftXMP"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "It is possible to add metadata of xmp to jpeg files."
 
   # This description is used to generate tags and improve search results.
