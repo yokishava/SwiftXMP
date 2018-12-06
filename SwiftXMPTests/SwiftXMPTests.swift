@@ -101,17 +101,6 @@ class SwiftXMPTests: XCTestCase {
         XCTAssertEqual(str, result)
     }
     
-//    func testFindExifIndex() {
-//        let image = UIImage(named: "dest.jpg")!
-//        let imgData = UIImageJPEGRepresentation(image, 1.0)!
-//        let swiftXmp = SwiftXMP()
-//        let bytes = swiftXmp.convertDataToBytes(data: imgData)
-//        let result = swiftXmp.findXmp(bytes: bytes)
-//        XCTAssertNotNil(result.exifHead)
-//        XCTAssertNil(result.head)
-//        XCTAssertNil(result.end)
-//    }
-    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
