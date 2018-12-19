@@ -8,9 +8,9 @@
 
 import Foundation
 
-public enum Result {
+public enum Result<T> {
     
-    case success(Data)
+    case success(T)
     
     case failed(Error)
     

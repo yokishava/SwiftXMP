@@ -13,7 +13,7 @@ open class SwiftXMP {
     public init() {}
     
     //jpgなどのファイルパス
-    open func embedXmp(contens: URL, xml: String) -> Result {
+    open func embedXmp(contens: URL, xml: String) -> Result<Data> {
         do {
             let data = try Data(contentsOf: contens)
             let bytes = convertDataToBytes(data: data)
@@ -90,25 +90,45 @@ open class SwiftXMP {
     }
     
     //xmpを新しく作成
+    //create new XMP
     internal func createXmp(xml: String) -> [UInt8] {
         let adobe = "http://ns.adobe.com/xap/1.0/"
         let header = "<?xpacket begin=\"\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
         let footer = "<?xpacket end=\"w\"?>"
         
+        /*
+            string => [UInt8]
+        */
+        //convert "http://ns.adobe.com/xap/1.0/" to [UInt8]
         var adobeBytes = convertStringToBytes(value: adobe)
+        //convert "<?xpacket begin=\"\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>" to [UInt8]
         let headerBytes = convertStringToBytes(value: header)
+        //convert "<?xpacket end=\"w\"?>" to [UInt8]
         let footerBytes = convertStringToBytes(value: footer)
+        //xml 開発者、ユーザーが実際に加えたいXMLの文字列
+        //convert xml to [UInt8]
         var xmlBytes = convertStringToBytes(value: xml)
         
+        // "http://ns.adobe.com/xap/1.0/"の直前に1byteの空白が存在するため
+        //1byte分の空白（16進数では0x00）を追加する
         adobeBytes.append(0x00)
+        
+        //XMPの仕様に基づいて、変換した[UInt8]を結合する
+        // "http://ns.adobe.com/xap/1.0/"
+        // <?xpacket begin=\"\" id=\"W5M0MpCehiHzreSzNTczkc9d\"?>
+        //   xml
+        // "<?xpacket end=\"w\"?>"
         xmlBytes = adobeBytes + headerBytes + xmlBytes + footerBytes
         
         print("xmlBytes count : \(xmlBytes.count)")
         print("Hexadecimal : \(String(xmlBytes.count, radix: 16))")
         
-        //+2 はセグメントのデータ長と数を合わせるため
+        //+2 はセグメントのデータ長と内容とで、できるバイト数へ数を合わせるため
+        //セグメントのデータ長を表わす分のbyte分(2bytes)を[UInt8]型のxmlBytesに追加する
         var count = xmlBytes.count + 2
+        
         let data = Data(bytes: &count, count: MemoryLayout.size(ofValue: count))
+        
         let bytes = data.map({$0})
         
         //bytes.count : データ長　0xFFFE1 の次の2byteに入れるデータ長の数
