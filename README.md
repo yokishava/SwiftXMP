@@ -38,7 +38,7 @@ Alternatively to give it a test run, run the command:
 
 insert following script to your Cartfile:
 
-```github "2takaanthony85/SwiftXMP"```
+```github "wakashiyo/SwiftXMP"```
 
 run ```carthage update```
 
