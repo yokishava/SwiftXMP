@@ -10,6 +10,7 @@
 		59A48B632162601700694BBB /* Xmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A48B622162601700694BBB /* Xmp.swift */; };
 		59A48B6521626BC200694BBB /* Exif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A48B6421626BC200694BBB /* Exif.swift */; };
 		59C1BCF621CA9E5A00DD4058 /* Continuable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1BCF521CA9E5A00DD4058 /* Continuable.swift */; };
+		59C1BCF821CE319700DD4058 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1BCF721CE319700DD4058 /* Convertable.swift */; };
 		59C46313215F160C0076333D /* SwiftXMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C46312215F160C0076333D /* SwiftXMP.swift */; };
 		59C4631521608C5D0076333D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4631421608C5D0076333D /* Result.swift */; };
 		59D23487215F148900028BF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D23486215F148900028BF1 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		59A48B622162601700694BBB /* Xmp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xmp.swift; sourceTree = "<group>"; };
 		59A48B6421626BC200694BBB /* Exif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exif.swift; sourceTree = "<group>"; };
 		59C1BCF521CA9E5A00DD4058 /* Continuable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Continuable.swift; sourceTree = "<group>"; };
+		59C1BCF721CE319700DD4058 /* Convertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
 		59C46309215F15610076333D /* SwiftXMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftXMP.h; sourceTree = "<group>"; };
 		59C46312215F160C0076333D /* SwiftXMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftXMP.swift; sourceTree = "<group>"; };
 		59C4631421608C5D0076333D /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				59C46312215F160C0076333D /* SwiftXMP.swift */,
 				59C4631421608C5D0076333D /* Result.swift */,
 				59C1BCF521CA9E5A00DD4058 /* Continuable.swift */,
+				59C1BCF721CE319700DD4058 /* Convertable.swift */,
 			);
 			name = SwiftXMP;
 			path = ../SwiftXMP;
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59C1BCF621CA9E5A00DD4058 /* Continuable.swift in Sources */,
+				59C1BCF821CE319700DD4058 /* Convertable.swift in Sources */,
 				59D23489215F148900028BF1 /* ViewController.swift in Sources */,
 				59A48B6521626BC200694BBB /* Exif.swift in Sources */,
 				59C46313215F160C0076333D /* SwiftXMP.swift in Sources */,

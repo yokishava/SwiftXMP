@@ -84,11 +84,6 @@ open class SwiftXMP {
         }
     }
     
-    //Data -> [UInt8]
-    internal func convertDataToBytes(data: Data) -> [UInt8] {
-        return data.map({$0})
-    }
-    
     //xmpを新しく作成
     //create new XMP
     internal func createXmp(xml: String) -> [UInt8] {
@@ -140,6 +135,29 @@ open class SwiftXMP {
         return xmpBytes
     }
     
+    //XMPのセグメントの最後にあたるindexを取得
+    internal func findEndXmpIndex(start: Int, bytes: [UInt8]) -> Int {
+        //29 : "http://ns.adobe.com/xap/1.0/"の次のbyteのindexを示す
+        var offset = start + 29
+        var xmpEndIndex = 0
+        while (offset < bytes.count) {
+            if getBytesString(bytes: bytes, start: offset, length: 19) == "<?xpacket end=\"w\"?>" {
+                //Xmpの最後のindex
+                //19 : "<?xpacket end=\"w\"?>" のbyte分
+                xmpEndIndex = offset + 19
+                break
+            } else {
+                offset = offset + 1
+            }
+        }
+        return xmpEndIndex
+    }
+    
+    //Data -> [UInt8]
+    internal func convertDataToBytes(data: Data) -> [UInt8] {
+        return data.map({$0})
+    }
+    
     //String → [UInt8]
     internal func convertStringToBytes(value: String) -> [UInt8] {
         let data = value.data(using: .utf8)!
@@ -167,24 +185,6 @@ open class SwiftXMP {
             index = index + 1
         })
         return _bytes
-    }
-    
-    //XMPのセグメントの最後にあたるindexを取得
-    internal func findEndXmpIndex(start: Int, bytes: [UInt8]) -> Int {
-        //29 : "http://ns.adobe.com/xap/1.0/"の次のbyteのindexを示す
-        var offset = start + 29
-        var xmpEndIndex = 0
-        while (offset < bytes.count) {
-            if getBytesString(bytes: bytes, start: offset, length: 19) == "<?xpacket end=\"w\"?>" {
-                //Xmpの最後のindex
-                //19 : "<?xpacket end=\"w\"?>" のbyte分
-                xmpEndIndex = offset + 19
-                break
-            } else {
-                offset = offset + 1
-            }
-        }
-        return xmpEndIndex
     }
     
     //指定した範囲のbytes([UInt8])を取得

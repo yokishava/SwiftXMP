@@ -53,3 +53,16 @@ struct XMPContinuity: Continuable {
         return elements
     }
 }
+
+extension XMPContinuity {
+    
+    typealias ReturnType = String
+    
+    func getSpecifiedRangeStringFromBytes(bytes: [Element], start: Int, length: Int) -> String {
+        let _bytes = selectElements(elements: bytes, start: start, length: length)
+        let data = Data(bytes: _bytes)
+        guard let str = String(data: data, encoding: .utf8) else { return "" }
+        return str
+    }
+    
+}
