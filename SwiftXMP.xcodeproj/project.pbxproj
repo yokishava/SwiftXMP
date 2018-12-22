@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59C1BCFB21CE37B300DD4058 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1BCF921CE37B300DD4058 /* Convertable.swift */; };
+		59C1BCFC21CE37B300DD4058 /* Continuable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1BCFA21CE37B300DD4058 /* Continuable.swift */; };
 		59C4630F215F15C80076333D /* SwiftXMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4630E215F15C80076333D /* SwiftXMP.swift */; };
 		59C4631721608D020076333D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C4631621608D020076333D /* Result.swift */; };
 		59D2346A215F147300028BF1 /* SwiftXMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D23460215F147300028BF1 /* SwiftXMP.framework */; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59C1BCF921CE37B300DD4058 /* Convertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
+		59C1BCFA21CE37B300DD4058 /* Continuable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Continuable.swift; sourceTree = "<group>"; };
 		59C4630E215F15C80076333D /* SwiftXMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftXMP.swift; sourceTree = "<group>"; };
 		59C4631621608D020076333D /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		59D23460215F147300028BF1 /* SwiftXMP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftXMP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +79,8 @@
 		59D23462215F147300028BF1 /* SwiftXMP */ = {
 			isa = PBXGroup;
 			children = (
+				59C1BCFA21CE37B300DD4058 /* Continuable.swift */,
+				59C1BCF921CE37B300DD4058 /* Convertable.swift */,
 				59D23464215F147300028BF1 /* Info.plist */,
 				59D23463215F147300028BF1 /* SwiftXMP.h */,
 				59C4630E215F15C80076333D /* SwiftXMP.swift */,
@@ -201,6 +207,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59C1BCFC21CE37B300DD4058 /* Continuable.swift in Sources */,
+				59C1BCFB21CE37B300DD4058 /* Convertable.swift in Sources */,
 				59C4631721608D020076333D /* Result.swift in Sources */,
 				59C4630F215F15C80076333D /* SwiftXMP.swift in Sources */,
 			);
